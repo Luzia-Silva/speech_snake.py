@@ -18,3 +18,9 @@ def index():
 def graphics():
     images = StartDetectionAndClickSynthesis()
     return render_template("analyzes.html", img_base64=images.image_base64)
+
+
+@app.route("/analyzes")
+def graphic03():
+    images = StartDetectionAndClickSynthesis()
+    return "teste"

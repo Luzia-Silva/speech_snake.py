@@ -13,14 +13,11 @@ from app.models.analyzes import StartDetectionAndClickSynthesis
 def index():
     return render_template("index.html")
 
+@app.route("/audioupload")
+def audioupload():
+    return render_template("audioupload.html")
 
 @app.route("/analyzes")
 def graphics():
     images = StartDetectionAndClickSynthesis()
-    return render_template("analyzes.html", img_base64=images.image_base64)
-
-
-@app.route("/analyzes")
-def graphic03():
-    images = StartDetectionAndClickSynthesis()
-    return "teste"
+    return render_template("analyzes.html", img_base64=images.image_base64, dados=dados)

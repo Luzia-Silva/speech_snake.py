@@ -26,15 +26,15 @@ Para executar o projeto em seu ambiente será necessário a utilização da vers
 ![Alt text](docs/images/pages/analytics_page.png)
 # 🛠️ Construído com
 
-- [Flask](https://flask.palletsprojects.com/) - Framework web
-- [Boostrap](https://getbootstrap.com/) - Framework web styles
-- [Librosa](https://librosa.org/doc/latest/index.html) - Biblioteca de análise de áudios
-- [Matplotlib](https://matplotlib.org/) - Biblioteca de visualização gráfica
+- [Flask](https://flask.palletsprojects.com/) - Framework web - versão 2.2.3
+- [Boostrap](https://getbootstrap.com/) - Framework web styles - versão 5.0
+- [Librosa](https://librosa.org/doc/latest/index.html) - Biblioteca de análise de áudios - versão 0.10.0
+- [Matplotlib](https://matplotlib.org/) - Biblioteca de visualização gráfica - versão 3.7.1
 
 # ✒️ Autores
 
 📚 Perfis profissionais:
 
-- **Cientista/Desenvolvedor** - [Luzia Silva](https://github.com/Luzia-Silva)
-- **Cientista/Desenvolvedor** - [Joyce Leal](https://www.linkedin.com/in/joyce-lebedasi/)
-- **Cientista/Desenvolvedor** - [Vinicius Augusto](https://www.linkedin.com/in/vinissilva/)
+- **Desenvolvedor** - [Luzia Silva](https://github.com/Luzia-Silva)
+- **Pesquisador** - [Joyce Leal](https://www.linkedin.com/in/joyce-lebedasi/)
+- **Pesquisador/Desenvolvedor** - [Vinicius Augusto](https://www.linkedin.com/in/vinissilva/)

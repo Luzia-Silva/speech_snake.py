@@ -1,6 +1,8 @@
-# SpeechSnake
+<center>
+<img src="docs/images/pages/speechsnake.png" width="400">
+</center>
 
-O projeto SpeechSnake é desenvolvido utilizando Python, assim originando seu nome, e com o uso de bibliotecas de análise de voz e fluência, desse modo há uma saída de com gráficos e dados sobre o áudio em questão.
+### O projeto SpeechSnake é desenvolvido utilizando Python, assim originando seu nome, e com o uso de bibliotecas de análise de voz e fluência, desse modo há uma saída de com gráficos e dados sobre o áudio em questão.
 
 </br>
 
@@ -24,10 +26,11 @@ Para executar o projeto em seu ambiente será necessário a utilização da vers
 
 ![Alt text](docs/images/pages/home_page.png)
 ![Alt text](docs/images/pages/analytics_page.png)
+
 # 🛠️ Construído com
 
 - [Flask](https://flask.palletsprojects.com/) - Framework web - versão 2.2.3
-- [Boostrap](https://getbootstrap.com/) - Framework web styles - versão 5.0
+- [Bootstrap](https://getbootstrap.com/) - Framework web styles - versão 5.0
 - [Librosa](https://librosa.org/doc/latest/index.html) - Biblioteca de análise de áudios - versão 0.10.0
 - [Matplotlib](https://matplotlib.org/) - Biblioteca de visualização gráfica - versão 3.7.1
 

@@ -2,15 +2,59 @@
 
 {% block content %}
 
-<div class="px-4 py-1 my-5 text-center">
-  <form>
-    <div>
-      <label for="arquivo">Selecione um arquivo:</label>
-      <input type="file" name="arquivo" id="arquivo">
-    </div>
-    <input type="submit" value="Enviar">
-  </form>
-</div>
+<div class="d-flex align-content-center justify-content-center">
+  <div class="px-4 py-1 my-5 text-center w-50 ">
+    <form>
+      <div class="mb-3">
+        <label for="formFile" class="form-label fw-bold" style="font-size: 2rem;">Faça upload do seu áudio</label>
+        <input class="form-control" type="file" id="formFile">
+      </div>
 
+    </form>
+    <div class="alert alert-dark">
+      <h4 class="alert-heading" style="font-size: 1.2rem; ">Grave um áudio repetindo esse trava-língua</h4>
+      <p style="text-align: justify;">
+        <i class="bi bi-mic-fill"></i>
+        Concluímos que chegamos à conclusão que não concluímos nada. Por isso, conclui-se que a conclusão será concluída
+        quando todas tiverem concluído que já é tempo de concluir uma conclusão.
+      </p>
+    </div>
+    <div class="accordion mb-3">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne ">
+          <button class="accordion-button  d-flex align-items-center" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"
+            style="background-color: #cfe2ff; color:#0a58ca;">
+            <h4 style="font-size: 1.2rem;"><i class="bi bi-info-circle-fill"></i> Informações de análise</h4>
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+          data-bs-parent="#accordionExample">
+          <div class="accordion-body" style="background-color: #cfe2ff; color:#0a58ca;">
+            <p style="text-align: justify;">Nossos pesquisadores escolheram um trava-língua para que você treine a sua
+              fluência e voz, com base
+              nisso foi utilizado áudios saudáveis e com graus de disfluência para treinar o algoritmo de
+              comparação, realizando assim o aprendizado de máquina para que seja possível fazer análises precisas. </p>
+            <hr>
+            <div style="text-align: justify;">
+              <p class="mb-0"> <i class="bi bi-check-circle-fill"></i> O áudio não pode ter mais de 1 minuto de duração.
+              </p>
+              <hr>
+              <p class="mb-0"> <i class="bi bi-check-circle-fill"></i> Lembre-se de estar em um ambiente silencioso para
+                que
+                não
+                haja divergências na análise.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-grid gap-2">
+      <button class="btn btn-secondary" type="button">Analisar </button>
+    </div>
+
+  </div>
+
+</div>
 
 {% endblock %}

@@ -24,8 +24,10 @@ Para executar o projeto em seu ambiente será necessário a utilização da vers
 
 # 📃 Páginas
 
-![Alt text](docs/images/pages/home_page.png)
-![Alt text](docs/images/pages/analytics_page.png)
+![Alt text](docs/images/pages/home.png)
+![Alt text](docs/images/pages/metrics.png)
+![Alt text](docs/images/pages/analytics_one.png)
+![Alt text](docs/images/pages/analytics_two.png)
 
 # 🛠️ Construído com
 
@@ -34,6 +36,13 @@ Para executar o projeto em seu ambiente será necessário a utilização da vers
 - [Librosa](https://librosa.org/doc/latest/index.html) - Biblioteca de análise de áudios - versão 0.10.0
 - [Matplotlib](https://matplotlib.org/) - Biblioteca de visualização gráfica - versão 3.7.1
 
+# ✒️ Lista de Atividades
+
+- Criação das telas - ✅
+- Upload de áudio - em andamento
+- Treinamento de algoritmo para criar comparativos - em andamento
+- Criação da documentação do projeto - em andamento
+
 # ✒️ Autores
 
 📚 Perfis profissionais:
@@ -41,3 +50,10 @@ Para executar o projeto em seu ambiente será necessário a utilização da vers
 - **Desenvolvedor** - [Luzia Silva](https://github.com/Luzia-Silva)
 - **Pesquisador** - [Joyce Leal](https://www.linkedin.com/in/joyce-lebedasi/)
 - **Pesquisador/Desenvolvedor** - [Vinicius Augusto](https://www.linkedin.com/in/vinissilva/)
+
+<br>
+<br>
+ <Center>
+      <p>Copyright © 2023 Girludev ❤️</p>
+    
+ </Center>

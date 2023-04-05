@@ -8,10 +8,14 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from app import app
 import json
+import librosa
 
 from app.static.data.metricsTheAudios import metricsTheAudios
 from app.static.data.analyzes import analyzes
-from app.models.analyzes import StartDetectionAndClickSynthesis, Spectrogram
+from app.models.graphics import Spectrogram, Waveshow
+
+audio_file_user = librosa.ex('trumpet')
+audio_file_test = librosa.ex('trumpet')
 
 
 @app.route("/")
@@ -33,6 +37,8 @@ def metrics():
 
 @app.route("/analyzes")
 def graphics():
-    spectrogram = StartDetectionAndClickSynthesis()
-    analyzesJson = analyzes(spectrogram=spectrogram.image_base64)
+    spectrogram = Spectrogram()
+    waveshow = Waveshow()
+    analyzesJson = analyzes(
+        spectrogram=spectrogram.image_base64, waveshow=waveshow.image_base64)
     return render_template("analyzes.html", dados=analyzesJson)

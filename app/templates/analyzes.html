@@ -1,18 +1,24 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div>
+<div class="container">
   <h1 class="text-center mt-4">Análises de Voz e Fluência</h1>
-  <div class="d-flex justify-content-center flex-column  m-4">
-    <div class="d-flex justify-content-between">
-      {% for dado in dados %}
-      <div>
-        <h2 class="text-center mt-4" style="font-size: 1.2rem; font-weight: 700;">{{dado.title}}</h2>
-        <h3 style="font-size: 1rem;">{{dado.description}}</h3>
-      </div>
-      <img src="data:image/png;base64,{{ dado.graphic }}" class="rounded mx-auto d-block" alt="...">
-      {% endfor %}
+  <div class="row">
+    {% for dado in dados %}
+    <div class="col-12">
+      <h2 class="text-center mt-4" style="font-size: 1.2rem; font-weight: 700;">{{dado.title}}</h2>
+      <h3 style="font-size: 1rem; font-weight: 400;">{{dado.description}}</h3>
     </div>
+    <div class="col-sm-12 col-md-6 ">
+      <img src="data:image/png;base64,{{ dado.graphic }}" class="img-fluid mx-auto d-block">
+      <p class="text-center fw-bold">{{dado.analyzedUser}}</p>
+    </div>
+    <div class="col-sm-12 col-md-6 ">
+      <img src="data:image/png;base64,{{ dado.graphic }}" class="img-fluid mx-auto d-block">
+      <p class="text-center fw-bold">{{dado.analyzedUser}}</p>
+    </div>
+    {% endfor %}
+
   </div>
 </div>
 

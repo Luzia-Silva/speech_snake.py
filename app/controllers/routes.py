@@ -10,6 +10,7 @@ from app import app
 import json
 
 from app.static.data.metricsTheAudios import metricsTheAudios
+from app.static.data.analyzes import analyzes
 from app.models.analyzes import StartDetectionAndClickSynthesis, Spectrogram
 
 
@@ -32,5 +33,6 @@ def metrics():
 
 @app.route("/analyzes")
 def graphics():
-    images = StartDetectionAndClickSynthesis()
-    return render_template("analyzes.html", img_base64=images.image_base64)
+    spectrogram = StartDetectionAndClickSynthesis()
+    analyzesJson = analyzes(spectrogram=spectrogram.image_base64)
+    return render_template("analyzes.html", dados=analyzesJson)

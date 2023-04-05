@@ -5,17 +5,13 @@
   <h1 class="text-center mt-4">Análises de Voz e Fluência</h1>
   <div class="d-flex justify-content-center flex-column  m-4">
     <div class="d-flex justify-content-between">
+      {% for dado in dados %}
       <div>
-        <h2 class="text-center mt-4" style="font-size: 1.2rem; font-weight: 700;">Detecção de início e sintetização de
-          click</h2>
-        <h3 style="font-size: 1rem;">Localizamos os eventos de início de nota selecionando picos em um envelope de
-          intensidade
-          de início do áudio.</h3>
-        <a href="https://librosa.org/doc/latest/generated/librosa.onset.onset_detect.html"
-          style="text-decoration: none; color:rgb(9, 138, 9); font-weight: 700; font-size: 0.8rem;"><i
-            class="bi bi-file-earmark-bar-graph"></i>Documentação</a>
+        <h2 class="text-center mt-4" style="font-size: 1.2rem; font-weight: 700;">{{dado.title}}</h2>
+        <h3 style="font-size: 1rem;">{{dado.description}}</h3>
       </div>
-      <img src="data:image/png;base64,{{ img_base64 }}" class="rounded mx-auto d-block" alt="...">
+      <img src="data:image/png;base64,{{ dado.graphic }}" class="rounded mx-auto d-block" alt="...">
+      {% endfor %}
     </div>
   </div>
 </div>

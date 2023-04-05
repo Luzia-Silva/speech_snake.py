@@ -2,7 +2,7 @@
 <img src="docs/images/pages/speechsnake.png" width="400">
 </center>
 
-### O projeto SpeechSnake é desenvolvido utilizando Python, assim originando seu nome, e com o uso de bibliotecas de análise de voz e fluência, desse modo há uma saída de com gráficos e dados sobre o áudio em questão.
+### O projeto SpeechSnake foi desenvolvido com a utilização da linguagem Python, que deu origem ao seu nome, e também bibliotecas de análise de voz e fluência que resultam em uma saída com gráficos e dados sobre o áudio analisado.
 
 </br>
 

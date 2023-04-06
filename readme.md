@@ -51,9 +51,10 @@ Para executar o projeto em seu ambiente será necessário a utilização da vers
 - **Pesquisador** - [Joyce Leal](https://www.linkedin.com/in/joyce-lebedasi/)
 - **Pesquisador/Desenvolvedor** - [Vinicius Augusto](https://www.linkedin.com/in/vinissilva/)
 
-# Acesse vídeo no youtube ✨
+## Acesse os nossos vídeos com os links abaixo: 
 
-[![Watch the video](https://img.youtube.com/vi/ayURn4ZPUwU/default.jpg)](https://www.youtube.com/watch?v=ayURn4ZPUwU)
+- [O que é o projeto SpeechSnake?](https://www.youtube.com/watch?v=ayURn4ZPUwU)
+
 
 <br>
 <br>

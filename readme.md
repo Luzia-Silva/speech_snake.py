@@ -13,11 +13,22 @@ Instale as dependências disponibilizadas no package(requirements.txt), entre no
 windows:
 
 ```
+  pip -m venv venv
+  source venv/Scripts/activate
   pip install -r requirements.txt
-  venv/Script/activate
   flask run
+
 ```
 
+linux:
+
+```
+  pip -m venv venv
+  source venv/bin/activate
+  pip install -r requirements.txt
+  flask run
+  
+```
 # 📋 Pré-requisitos
 
 Para executar o projeto em seu ambiente será necessário a utilização da versão do python >=3.7, <3.11.

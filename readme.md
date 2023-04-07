@@ -8,9 +8,9 @@
 
 # 🚀 Começando
 
-Instale as dependências disponibilizadas no package(requirements.txt), entre no ambiente virtual e então execute:
+Instale as dependências disponibilizadas no requirements.txt dentro do seu ambiente virtual, então siga todos os passos abaixo:
 
-windows:
+Windows:
 
 ```
   pip -m venv venv
@@ -20,7 +20,7 @@ windows:
 
 ```
 
-linux:
+Linux:
 
 ```
   pip -m venv venv
@@ -47,12 +47,7 @@ Para executar o projeto em seu ambiente será necessário a utilização da vers
 - [Librosa](https://librosa.org/doc/latest/index.html) - Biblioteca de análise de áudios - versão 0.10.0
 - [Matplotlib](https://matplotlib.org/) - Biblioteca de visualização gráfica - versão 3.7.1
 
-# ✒️ Lista de Atividades
 
-- Criação das telas - ✅
-- Upload de áudio - em andamento
-- Treinamento de algoritmo para criar comparativos - em andamento
-- Criação da documentação do projeto - em andamento
 
 # ✒️ Autores
 
@@ -62,7 +57,7 @@ Para executar o projeto em seu ambiente será necessário a utilização da vers
 - **Pesquisador** - [Joyce Leal](https://www.linkedin.com/in/joyce-lebedasi/)
 - **Pesquisador/Desenvolvedor** - [Vinicius Augusto](https://www.linkedin.com/in/vinissilva/)
 
-## Acesse os nossos vídeos com os links abaixo: 
+## Acesse os nossos vídeos abaixo
 
 - [O que é o projeto SpeechSnake?](https://www.youtube.com/watch?v=ayURn4ZPUwU)
 

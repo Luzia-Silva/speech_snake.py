@@ -1,0 +1,22 @@
+name: Speech Snake
+
+on:
+  push:
+    branches: [ main ]
+ 
+jobs: 
+    install:
+      runs-on: ubuntu-latest
+     steps:
+        - uses: actions/checkout@v3
+        - uses: actions/setup-python@v4
+          with:
+            python-version: '3.10' 
+        - name: Venv
+          run: python -m venv venv 
+        - name: source venv
+          run: source venv/bin/activate
+        - name: Instal Requirements
+          run: pip install -r requirements.txt
+        - name: Flask
+          run: flask run 

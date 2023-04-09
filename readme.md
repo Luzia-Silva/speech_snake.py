@@ -13,7 +13,7 @@ Instale as dependências disponibilizadas no requirements.txt dentro do seu ambi
 Windows:
 
 ```
-  pip -m venv venv
+  python -m venv venv
   source venv/Scripts/activate
   pip install -r requirements.txt
   flask run
@@ -23,7 +23,7 @@ Windows:
 Linux:
 
 ```
-  pip -m venv venv
+  python -m venv venv
   source venv/bin/activate
   pip install -r requirements.txt
   flask run

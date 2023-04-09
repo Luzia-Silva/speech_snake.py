@@ -30,10 +30,16 @@ def audioupload():
 def upload():
     UPLOAD_FOLDER = os.path.join(
         os.getcwd() + "\\app\\static\\upload")  # temporario
+    size_audio = request.content_length
     if request.method == "POST":
         file = request.files['audio']
         if file.filename == '':
-            flash('Por favor, faça o upload de um áudio')
+            flash('Por favor, faça o upload de um áudio', 'warning')
+            return render_template("audioupload.html")
+        elif size_audio > 134986:
+            print(size_audio)
+            flash(
+                'Por favor, faça o upload de um áudio de no máximo de 1 minuto', 'danger')
             return render_template("audioupload.html")
         else:
             savePath = os.path.join(
@@ -42,6 +48,7 @@ def upload():
             analyzesJson = analyzes(
                 audio_file_analyzed=savePath, audio_file_user=savePath)
             return render_template("analyzes.html", dados=analyzesJson)
+
     else:
         return render_template("audioupload.html")
 

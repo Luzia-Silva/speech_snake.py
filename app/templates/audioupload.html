@@ -4,14 +4,11 @@
 
 <div class="d-flex align-content-center justify-content-center ">
   <div class="px-4 py-1 my-2 text-center col-md-6 col-sm-12">
-    {% with messages = get_flashed_messages() %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
-    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-      {% for message in messages %}
-      <div>
-        <i class="bi bi-exclamation-triangle-fill"></i>
-        {{ message }}
-      </div>
+    {% for category, message in messages %}
+    <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+      {{ message }}
       {% endfor %}
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>

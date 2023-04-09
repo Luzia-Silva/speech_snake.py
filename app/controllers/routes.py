@@ -14,7 +14,6 @@ import librosa
 
 from app.static.data.metricsTheAudios import metricsTheAudios
 from app.static.data.analyzes import analyzes
-from app.models.graphics import Spectrogram, Waveshow
 
 
 @app.route("/")
@@ -29,19 +28,27 @@ def audioupload():
 
 @app.route("/analyzes", methods=["POST", "GET"])
 def upload():
-    UPLOAD_FOLDER = os.path.join(os.getcwd() + "\\app\\static\\upload") #temporario
+    UPLOAD_FOLDER = os.path.join(
+        os.getcwd() + "\\app\\static\\upload")  # temporario
+    size_audio = request.content_length
     if request.method == "POST":
         file = request.files['audio']
         if file.filename == '':
-            flash('Por favor, faça o upload de um áudio')
+            flash('Por favor, faça o upload de um áudio', 'warning')
+            return render_template("audioupload.html")
+        elif size_audio > 134986:
+            print(size_audio)
+            flash(
+                'Por favor, faça o upload de um áudio de no máximo de 1 minuto', 'danger')
             return render_template("audioupload.html")
         else:
             savePath = os.path.join(
                 UPLOAD_FOLDER, secure_filename(file.filename))
             file.save(savePath)
             analyzesJson = analyzes(
-                spectrogram=Spectrogram(audio_file=savePath).spectrogramImage(), waveshow=Waveshow(audio_file=savePath).waveshowImage())
+                audio_file_analyzed=savePath, audio_file_user=savePath)
             return render_template("analyzes.html", dados=analyzesJson)
+
     else:
         return render_template("audioupload.html")
 

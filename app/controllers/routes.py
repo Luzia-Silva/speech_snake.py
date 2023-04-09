@@ -14,7 +14,6 @@ import librosa
 
 from app.static.data.metricsTheAudios import metricsTheAudios
 from app.static.data.analyzes import analyzes
-from app.models.graphics import Spectrogram, Waveshow
 
 
 @app.route("/")
@@ -29,7 +28,8 @@ def audioupload():
 
 @app.route("/analyzes", methods=["POST", "GET"])
 def upload():
-    UPLOAD_FOLDER = os.path.join(os.getcwd() + "\\app\\static\\upload") #temporario
+    UPLOAD_FOLDER = os.path.join(
+        os.getcwd() + "\\app\\static\\upload")  # temporario
     if request.method == "POST":
         file = request.files['audio']
         if file.filename == '':
@@ -40,7 +40,7 @@ def upload():
                 UPLOAD_FOLDER, secure_filename(file.filename))
             file.save(savePath)
             analyzesJson = analyzes(
-                spectrogram=Spectrogram(audio_file=savePath).spectrogramImage(), waveshow=Waveshow(audio_file=savePath).waveshowImage())
+                audio_file_analyzed=savePath, audio_file_user=savePath)
             return render_template("analyzes.html", dados=analyzesJson)
     else:
         return render_template("audioupload.html")

@@ -65,6 +65,6 @@ Para executar o projeto em seu ambiente será necessário a utilização da vers
 <br>
 <br>
  <Center>
-      <p>Copyright © 2023 Girludev❤️</p>
+      <p>Copyright © 2023 Girludev ❤️</p>
     
  </Center>

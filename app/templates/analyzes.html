@@ -4,18 +4,33 @@
 <div class="container">
   <h1 class="text-center mt-4">Análises de Voz e Fluência</h1>
   <div class="row">
+    <!-- <div class="col-md-6 col-sm-12 text-center">
+      <h2 class="text-center mt-4" style="font-size: 1.2rem; font-weight: 700;">Frequência de áudio filtrado</h2>
+      <p>{{filteredAudio}}</p>
+    </div>
+    <div class="col-md-6 col-sm-12 text-center">
+      <h2 class="text-center mt-4" style="font-size: 1.2rem; font-weight: 700;">Frequência de áudio não filtrado</h2>
+      <p>{{unfilteredAudio}}</p>
+    </div> -->
     {% for dado in dados %}
     <div class="col-12">
       <h2 class="text-center mt-4" style="font-size: 1.2rem; font-weight: 700;">{{dado.title}}</h2>
-      <h3 style="font-size: 1rem; font-weight: 400;">{{dado.description}}</h3>
+      <h3 style="font-size: 1rem; font-weight: 400; text-align: justify;">{{dado.description}}</h3>
     </div>
-    <div class="col-sm-12 col-md-6 ">
-      <img src="data:image/png;base64,{{ dado.graphicSalveel }}" class="img-fluid mx-auto d-block">
-      <p class="text-center fw-bold">Áudio saudável</p>
-    </div>
-    <div class="col-sm-12 col-md-6 ">
+    <div class="col-sm-12 col-md-12">
       <img src="data:image/png;base64,{{ dado.graphic }}" class="img-fluid mx-auto d-block">
-      <p class="text-center fw-bold">Áudio analisado</p>
+      <p class="text-center fw-bold m-2" style="font-size: 1rem; text-align: center;"> <i class="bi bi-mic-fill"></i> A
+        partir de análises esse
+        gráfico foi gerado com dados
+        extraídos
+        do áudio em questão </p>
+    </div>
+    <div class="col-sm-12 col-md-12">
+      <img src="data:image/png;base64,{{ dado.graphicSalveel }}" class="img-fluid mx-auto d-block">
+      <p class="text-center fw-bold m-2" style="font-size: 1rem;"> <i class="bi bi-mic-fill"></i> Exemplo de um gráfico
+        saudavél gerado por análises
+        de
+        dados</p>
     </div>
     {% endfor %}
   </div>

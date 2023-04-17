@@ -1,6 +1,6 @@
-import json
-from flask import Flask, jsonify
-from flask import Flask, send_file, render_template, request, flash
+from b2sdk.v2 import api as b2
+from flask import jsonify, redirect
+from flask import send_file, render_template, request, flash
 import base64
 from io import BytesIO
 import matplotlib.pyplot as plt
@@ -9,53 +9,61 @@ import os
 from werkzeug.utils import secure_filename
 
 from app import app
-import json
-import librosa
-
 from app.static.data.metricsTheAudios import metricsTheAudios
 from app.static.data.analyzes import analyzes
 from app.models.frequency import Frequency
-from app.controllers.file_type import allowed_file
+from app.enum.type_file import Allowed_file
 
 
-@app.route("/")
+b2_api = b2.B2Api()
+b2_api.authorize_account("production", os.environ.get(
+    "KEYID"), os.environ.get("APPLICATION_KEY"))
+bucket = b2_api.get_bucket_by_name(os.environ.get(
+    "BUCKETS"))
+
+
+@ app.route("/")
 def index():
     return render_template("index.html")
 
 
-@app.route("/audioupload")
-def audioupload():
-    return render_template("audioupload.html")
-
-
-@app.route("/analyzes", methods=["POST", "GET"])
-def upload():
-    size_audio = request.content_length
-    UPLOAD_FOLDER = os.path.join(
-        os.getcwd() + "\\app\\static\\upload")  # !temporario
+@ app.route("/audioupload", methods=["POST", "GET"])
+def audioUpload():
     if request.method == "POST":
         file = request.files["audio"]
         if file.filename == "":
             flash("Por favor, faça o upload de um áudio", "warning")
             return render_template("audioupload.html")
-        elif size_audio > 134986:
+        elif request.content_length > 134986:
             flash(
                 "Por favor, faça o upload de um áudio de no máximo de 1 minuto", "danger")
             return render_template("audioupload.html")
-        elif file and allowed_file(file.filename):
-            user_save_audio = os.path.join(
-                UPLOAD_FOLDER, secure_filename(file.filename))
-            file.save(user_save_audio)
-            analyzesJson = analyzes(
-                audio_file_analyzed=user_save_audio, audio_file_user=user_save_audio)
-            return render_template("analyzes.html", dados=analyzesJson)
-        else:
+        elif not Allowed_file(file.filename):
             flash("Por favor, informe um áudio dos seguintes tipos: mp3 ou wva", "danger")
+        else:
+            bucket.upload_bytes(file.read(), file.filename,
+                                content_type='audio/wav')
+            file_info = bucket.get_file_info_by_name(file.filename)
+            file_id = file_info.id_
+
+            return redirect("/analyzes/" + file_id)
     else:
         return render_template("audioupload.html")
 
 
-@app.route("/about")
+@ app.route("/analyzes/<filename>")
+def audioupload(filename):
+    local_file_path = os.path.join(
+        os.path.join(
+            os.getcwd() + "\\app\\static\\upload"), secure_filename(filename))
+    downloaded_file = bucket.download_file_by_id(filename)
+    downloaded_file.save_to(local_file_path)
+    analyzesJson = analyzes(
+        audio_file_analyzed=local_file_path, audio_file_user=local_file_path)
+    return render_template("analyzes.html", dados=analyzesJson)
+
+
+@ app.route("/about")
 def metrics():
     unpackingJsonFunction = json.dumps(metricsTheAudios)
     dados = json.loads(unpackingJsonFunction)

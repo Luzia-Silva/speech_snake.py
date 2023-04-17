@@ -27,8 +27,9 @@ Linux:
   source venv/bin/activate
   pip install -r requirements.txt
   flask run
-  
+
 ```
+
 # 📋 Pré-requisitos
 
 Para executar o projeto em seu ambiente será necessário a utilização da versão do python >=3.7, <3.11.
@@ -46,8 +47,9 @@ Para executar o projeto em seu ambiente será necessário a utilização da vers
 - [Bootstrap](https://getbootstrap.com/) - Framework web styles - versão 5.0
 - [Librosa](https://librosa.org/doc/latest/index.html) - Biblioteca de análise de áudios - versão 0.10.0
 - [Matplotlib](https://matplotlib.org/) - Biblioteca de visualização gráfica - versão 3.7.1
-- [Parselmouth](https://parselmouth.readthedocs.io/en/stable/) -  Biblioteca Python para o software Praat
-
+- [Parselmouth](https://parselmouth.readthedocs.io/en/stable/) - Biblioteca Python para o software Praat
+- [BackBlaze](https://www.backblaze.com/) - Upload de arquivos na nuvem
+- [b2-sdk-python]("https://b2-sdk-python.readthedocs.io/en/master/quick_start.html#copy-file) - É uma biblioteca cliente para fácil acesso a todos os recursos do B2 Cloud Storage.
 
 # ✒️ Autores
 
@@ -60,7 +62,6 @@ Para executar o projeto em seu ambiente será necessário a utilização da vers
 ## Acesse os nossos vídeos abaixo
 
 - [O que é o projeto SpeechSnake?](https://www.youtube.com/watch?v=ayURn4ZPUwU)
-
 
 <br>
 <br>

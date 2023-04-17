@@ -14,7 +14,7 @@
     </div>
     {% endif %}
     {% endwith %}
-    <form action="/analyzes" enctype="multipart/form-data" method="POST">
+    <form action="/audioupload" enctype="multipart/form-data" method="POST">
       <div class="mb-3">
         <label for="formFile" class="form-label fw-bold mb-3" style="font-size: 2rem;">Faça upload do seu áudio</label>
         <input class="form-control" type="file" id="formFile" name="audio">
@@ -56,6 +56,8 @@
                   que
                   não
                   haja divergências na análise.</p>
+                  <hr>
+                  <p class="mb-0"> <i class="bi bi-check-circle-fill"></i> Aplicação consegue realizar somente análises de áudios nos formatos: mp3 ou wva</p>
               </div>
             </div>
           </div>

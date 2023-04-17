@@ -57,8 +57,8 @@ def audioupload(filename):
     local_file_path = os.path.join(
         os.path.join(
             os.getcwd() + "\\app\\static\\upload"), secure_filename(filename))
-    downloaded_file = bucket.download_file_by_id(filename)
-    downloaded_file.save_to(local_file_path)
+    # downloaded_file = bucket.download_file_by_id(filename)
+    # downloaded_file.save_to(local_file_path)
     analyzesJson = analyzes(
         audio_file_analyzed=local_file_path, audio_file_user=local_file_path)
     return render_template("analyzes.html", dados=analyzesJson)

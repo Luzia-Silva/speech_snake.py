@@ -16,9 +16,10 @@ class Waveshow:
         y, sr = librosa.load(self.audio_file)
         plt.figure(figsize=(14, 5))
         librosa.display.waveshow(y, sr=sr)
-        buffer = BytesIO()
-        plt.savefig(buffer, format='png')
-        image_base64 = base64.b64encode(buffer.getvalue()).decode('utf-8')
+        img = BytesIO()
+        plt.savefig(img, format='png')
+        img.seek(0)
+        image_base64 = base64.b64encode(img.getvalue()).decode()
         return image_base64
 
 

@@ -1,3 +1,4 @@
+import json
 from b2sdk.v2 import api as b2
 from flask import jsonify, redirect
 from flask import send_file, render_template, request, flash
@@ -9,7 +10,7 @@ import os
 from werkzeug.utils import secure_filename
 
 from app import app
-from app.static.data.metricsTheAudios import metricsTheAudios
+from app.static.data.aboutTheTeams import aboutTheTeams
 from app.static.data.analyzes import analyzes
 from app.models.frequency import Frequency
 from app.enum.type_file import Allowed_file
@@ -64,7 +65,7 @@ def audioupload(filename):
 
 
 @ app.route("/about")
-def metrics():
-    unpackingJsonFunction = json.dumps(metricsTheAudios)
+def about():
+    unpackingJsonFunction = json.dumps(aboutTheTeams)
     dados = json.loads(unpackingJsonFunction)
     return render_template("about.html", dados=dados)

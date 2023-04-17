@@ -6,21 +6,21 @@ import matplotlib.pyplot as plt
 import base64
 import io
 from io import BytesIO
+import os
+
+local_file_path = os.path.join(
+    os.path.join(
+        os.getcwd() + "\\app\\static\\upload"), "4_z5e2af608a48f876a8d70071c_f119835116d90c79b_d20230417_m023040_c005_v0501002_t0027_u01681698640183")
 
 
 class Waveshow:
-    def __init__(self, audio_file):
-        self.audio_file = audio_file
-
-    def waveshowImage(self):
-        y, sr = librosa.load(self.audio_file)
-        plt.figure(figsize=(14, 5))
-        librosa.display.waveshow(y, sr=sr)
-        img = BytesIO()
-        plt.savefig(img, format='png')
-        img.seek(0)
-        image_base64 = base64.b64encode(img.getvalue()).decode()
-        return image_base64
+    y, sr = librosa.load(local_file_path)
+    plt.figure(figsize=(14, 5))
+    librosa.display.waveshow(y, sr=sr)
+    img = BytesIO()
+    plt.savefig(img, format='png')
+    img.seek(0)
+    image_base64 = base64.b64encode(img.getvalue()).decode()
 
 
 class FundamentalFrequency:
@@ -74,7 +74,8 @@ class HeatSpectrogram:
         plt.xlabel("Tempo [Amostras]")
         plt.ylabel("Frequência[Hz]")
         plt.twinx()
-        plt.plot(intensity.xs(), intensity.values.T, linewidth=3, color='w')
+        plt.plot(intensity.xs(), intensity.values.T,
+                 linewidth=3, color='w')
         plt.plot(intensity.xs(), intensity.values.T, linewidth=1)
         plt.grid(False)
         plt.ylim(0)

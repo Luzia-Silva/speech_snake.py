@@ -52,11 +52,11 @@ def audioUpload():
         return render_template("audioupload.html")
 
 
-@ app.route("/analyzes/<filename>")
-def audioupload(filename):
+@ app.route("/analyzes")
+def audioupload():
     local_file_path = os.path.join(
         os.path.join(
-            os.getcwd() + "\\app\\static\\upload"), secure_filename(filename))
+            os.getcwd() + "\\app\\static\\upload"), "4_z5e2af608a48f876a8d70071c_f119835116d90c79b_d20230417_m023040_c005_v0501002_t0027_u01681698640183")
     # downloaded_file = bucket.download_file_by_id(filename)
     # downloaded_file.save_to(local_file_path)
     analyzesJson = analyzes(

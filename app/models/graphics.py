@@ -10,7 +10,7 @@ import os
 
 
 def Waveshow():
-    filename = "app/models/upload/transferir.wav"
+    filename = "./upload/transferir.wav"
     y, sr = librosa.load(filename)
     spec = librosa.feature.melspectrogram(y=y, sr=sr)
     fig, ax = plt.subplots(figsize=(10, 4))

@@ -12,16 +12,19 @@ import os
 def Waveshow():
     filename = os.getcwd() + "\\app\\static\\upload\\4_z5e2af608a48f876a8d70071c_f119835116d90c79b_d20230417_m023040_c005_v0501002_t0027_u01681698640183"
     y, sr = librosa.load(filename)
-    fig, ax = plt.subplots(figsize=(14, 5))
-    librosa.display.waveshow(y, sr=sr, ax=ax)
-    ax.set(xlabel='Tempo (segundos)', ylabel='Amplitude',
-           title='Forma de onda do áudio')
+    spec = librosa.feature.melspectrogram(y=y, sr=sr)
+    fig, ax = plt.subplots(figsize=(10, 4))
+    img = librosa.display.specshow(librosa.power_to_db(spec, ref=np.max),
+                            y_axis='mel', fmax=8000,
+                            x_axis='time', ax=ax)
+    ax.set(title='Espectrograma')
+    plt.colorbar(img, ax=ax, format='%+2.0f dB')
     plt.tight_layout()
     buf = io.BytesIO()
     fig.savefig(buf, format='png', dpi=300, bbox_inches='tight')
     buf.seek(0)
-    image_base64 = base64.b64encode(buf.read()).decode("utf-8")
-    return f'<img src="data:image/png;base64,{image_base64}"/>'
+    data = base64.b64encode(buf.read()).decode("utf-8")
+    return f'<img src="data:image/png;base64,{data}"/>'
 
 
 

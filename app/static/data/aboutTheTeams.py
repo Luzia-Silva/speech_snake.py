@@ -1,5 +1,5 @@
-global metricsTheAudios
-metricsTheAudios = [
+global aboutTheTeams
+aboutTheTeams = [
     {
         "title": "Frequência em um áudio",
         "description": " Frequencia é referente a vibração de ondas sonóras, que ocorre nas móleculas do ar, e a quantidade dos ciclos dessas oscilações que formam as ondas são a frequência, cuja medição é feita em Hertz(Hz) Voz humana: 85Hz a 255Hz, é a frequencia fundamental.",

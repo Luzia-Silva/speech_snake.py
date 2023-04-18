@@ -8,15 +8,22 @@ import io
 from io import BytesIO
 import os
 
+
 def Waveshow():
-    meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho']
-    valores = [105235, 107697, 110256, 109236, 108859, 109986]
-    plt.plot(meses, valores)
-    buffer = BytesIO()
-    plt.savefig(buffer, format='png')
-    buffer.seek(0)
-    image_base64 = base64.b64encode(buffer.getvalue()).decode('utf-8')
+    filename = os.getcwd() + "\\app\\static\\upload\\4_z5e2af608a48f876a8d70071c_f119835116d90c79b_d20230417_m023040_c005_v0501002_t0027_u01681698640183"
+    y, sr = librosa.load(filename)
+    fig, ax = plt.subplots(figsize=(14, 5))
+    librosa.display.waveshow(y, sr=sr, ax=ax)
+    ax.set(xlabel='Tempo (segundos)', ylabel='Amplitude',
+           title='Forma de onda do áudio')
+    plt.tight_layout()
+    buf = io.BytesIO()
+    fig.savefig(buf, format='png', dpi=300, bbox_inches='tight')
+    buf.seek(0)
+    image_base64 = base64.b64encode(buf.read()).decode("utf-8")
     return f'<img src="data:image/png;base64,{image_base64}"/>'
+
+
 
 # class FundamentalFrequency:
 #     def __init__(self, audio_file):

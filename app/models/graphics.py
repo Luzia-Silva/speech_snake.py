@@ -10,7 +10,7 @@ import os
 
 
 def Waveshow():
-    filename = os.getcwd() + "\\app\\static\\upload\\4_z5e2af608a48f876a8d70071c_f119835116d90c79b_d20230417_m023040_c005_v0501002_t0027_u01681698640183"
+    filename = "./upload/4_z5e2af608a48f876a8d70071c_f1068c9b138f01d2e_d20230418_m142104_c005_v0501001_t0001_u01681827664597"
     y, sr = librosa.load(filename)
     spec = librosa.feature.melspectrogram(y=y, sr=sr)
     fig, ax = plt.subplots(figsize=(10, 4))

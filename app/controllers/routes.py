@@ -55,7 +55,7 @@ def audioUpload():
         return render_template("audioupload.html")
 
 
-@ app.route("/analyzes")
+@app.route("/analyzes")
 def audioupload():
     plot_html = Waveshow()
     return f'''

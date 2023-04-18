@@ -9,10 +9,9 @@ from io import BytesIO
 import os
 
 def Waveshow():
-    local_file_path = os.getcwd() + "\\app\\static\\upload\\4_z5e2af608a48f876a8d70071c_f119835116d90c79b_d20230417_m023040_c005_v0501002_t0027_u01681698640183"
-    y, sr = librosa.load(local_file_path)
-    plt.figure(figsize=(14, 5))
-    librosa.display.waveshow(y, sr=sr)
+    meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho']
+    valores = [105235, 107697, 110256, 109236, 108859, 109986]
+    plt.plot(meses, valores)
     buffer = BytesIO()
     plt.savefig(buffer, format='png')
     buffer.seek(0)

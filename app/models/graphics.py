@@ -6,20 +6,21 @@ import matplotlib.pyplot as plt
 import base64
 import io
 from io import BytesIO
+import os
+from werkzeug.utils import secure_filename
+
+local_file_path = os.path.join(
+    os.path.join(
+        os.getcwd() + "\\app\\static\\upload\\4_z5e2af608a48f876a8d70071c_f1068c9b138f01d2e_d20230418_m142104_c005_v0501001_t0001_u01681827664597"))
 
 
 class Waveshow:
-    def __init__(self, audio_file):
-        self.audio_file = audio_file
-
-    def waveshowImage(self):
-        y, sr = librosa.load(self.audio_file)
-        plt.figure(figsize=(14, 5))
-        librosa.display.waveshow(y, sr=sr)
-        buffer = BytesIO()
-        plt.savefig(buffer, format='png')
-        image_base64 = base64.b64encode(buffer.getvalue()).decode('utf-8')
-        return image_base64
+    y, sr = librosa.load(local_file_path)
+    plt.figure(figsize=(14, 5))
+    librosa.display.waveshow(y, sr=sr)
+    buffer = BytesIO()
+    plt.savefig(buffer, format='png')
+    image_base64 = base64.b64encode(buffer.getvalue()).decode('utf-8')
 
 
 class FundamentalFrequency:

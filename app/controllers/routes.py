@@ -10,10 +10,10 @@ from werkzeug.utils import secure_filename
 
 from app import app
 from app.static.data.metricsTheAudios import metricsTheAudios
-from app.static.data.analyzes import analyzes
+from app.static.analyzes import analyzes
 from app.models.frequency import Frequency
 from app.enum.type_file import Allowed_file
-
+from app.models.graphics import Waveshow
 
 b2_api = b2.B2Api()
 b2_api.authorize_account("production", os.environ.get(
@@ -56,11 +56,8 @@ def audioupload(filename):
     local_file_path = os.path.join(
         os.path.join(
             os.getcwd() + "\\app\\static\\upload"), secure_filename(filename))
-    downloaded_file = bucket.download_file_by_id(filename)
-    downloaded_file.save_to(local_file_path)
-    analyzesJson = analyzes(
-        audio_file_analyzed=local_file_path, audio_file_user=local_file_path)
-    return render_template("analyzes.html", dados=analyzesJson)
+    image = Waveshow().image_base64
+    return render_template("test.html", image=image)
 
 
 @ app.route("/about")

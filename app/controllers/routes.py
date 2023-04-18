@@ -8,12 +8,16 @@ import seaborn as sns
 import os
 from werkzeug.utils import secure_filename
 
+import librosa
+import librosa.display
+import numpy as np
+import io
+
 from app import app
 from app.static.data.metricsTheAudios import metricsTheAudios
-from app.static.data.analyzes import analyzes
 from app.models.frequency import Frequency
 from app.enum.type_file import Allowed_file
-
+from app.models.graphics import Waveshow
 
 b2_api = b2.B2Api()
 b2_api.authorize_account("production", os.environ.get(
@@ -51,16 +55,17 @@ def audioUpload():
         return render_template("audioupload.html")
 
 
-@ app.route("/analyzes/<filename>")
-def audioupload(filename):
-    local_file_path = os.path.join(
-        os.path.join(
-            os.getcwd() + "\\app\\static\\upload"), secure_filename(filename))
-    downloaded_file = bucket.download_file_by_id(filename)
-    downloaded_file.save_to(local_file_path)
-    analyzesJson = analyzes(
-        audio_file_analyzed=local_file_path, audio_file_user=local_file_path)
-    return render_template("analyzes.html", dados=analyzesJson)
+@ app.route("/analyzes")
+def audioupload():
+    plot_html = Waveshow()
+    return f'''
+        <html>
+            <head><title>Gráfico</title></head>
+            <body>
+                {plot_html}
+            </body>
+        </html>
+    '''
 
 
 @ app.route("/about")

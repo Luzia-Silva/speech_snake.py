@@ -34,10 +34,11 @@ def audioUpload():
         if file.filename == "":
             flash("Por favor, faça o upload de um áudio", "warning")
             return render_template("audioupload.html")
-        elif request.content_length > 134986:
-            flash(
-                "Por favor, faça o upload de um áudio de no máximo de 1 minuto", "danger")
-            return render_template("audioupload.html")
+        # elif request.content_length > 20480000: 
+        #     flash(
+        #         "Por favor, faça o upload de um áudio de no máximo de 1 minuto", "danger")
+        #     return render_template("audioupload.html") 
+        # Entender como fazer essa analise 
         elif not Allowed_file(file.filename):
             flash("Por favor, informe um áudio dos seguintes tipos: mp3 ou wva", "danger")
         else:
@@ -45,19 +46,21 @@ def audioUpload():
                                 content_type='audio/wav')
             file_info = bucket.get_file_info_by_name(file.filename)
             file_id = file_info.id_
-
-            return redirect("/analyzes/" + file_id)
+            return ""
     else:
         return render_template("audioupload.html")
 
 
 @ app.route("/analyzes/<filename>")
 def audioupload(filename):
-    #  local_file_path = os.path.join(
-    #     os.path.join(
-    #         os.getcwd() + "\\app\\static\\upload"), secure_filename(filename)) Para uso local para testes
+    # Para uso local para testes
     local_file_path = os.path.join(
-        "app/static/upload/" + secure_filename(filename))
+        os.path.join(
+            os.getcwd() + "\\app\\static\\upload"), secure_filename(filename))
+    
+    #Produção
+    # local_file_path = os.path.join(
+    #     "app/static/upload/" + secure_filename(filename))
     downloaded_file = bucket.download_file_by_id(filename)
     downloaded_file.save_to(local_file_path)
     analyzesJson = analyzes(

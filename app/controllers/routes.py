@@ -46,7 +46,7 @@ def audioUpload():
                                 content_type='audio/wav')
             file_info = bucket.get_file_info_by_name(file.filename)
             file_id = file_info.id_
-            return ""
+            return redirect("/analyzes/" + file_id)
     else:
         return render_template("audioupload.html")
 
@@ -57,7 +57,6 @@ def audioupload(filename):
     # local_file_path = os.path.join(
     #     os.path.join(
     #         os.getcwd() + "\\app\\static\\upload"), secure_filename(filename))
-    
     Produção
     local_file_path = os.path.join(
         "app/static/upload/" + secure_filename(filename))

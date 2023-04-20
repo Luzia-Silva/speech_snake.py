@@ -57,7 +57,7 @@ def audioupload(filename):
     # local_file_path = os.path.join(
     #     os.path.join(
     #         os.getcwd() + "\\app\\static\\upload"), secure_filename(filename))
-    Produção
+    #Produção
     local_file_path = os.path.join(
         "app/static/upload/" + secure_filename(filename))
     downloaded_file = bucket.download_file_by_id(filename)

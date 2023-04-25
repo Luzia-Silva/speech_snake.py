@@ -3,10 +3,8 @@ import librosa.display
 import parselmouth
 import numpy as np
 import matplotlib.pyplot as plt
-import base64
-import io
-from io import BytesIO
 
+from app.enum.save_image import Save_image
 
 class Waveshow:
     def __init__(self, audio_file):
@@ -16,10 +14,8 @@ class Waveshow:
         y, sr = librosa.load(self.audio_file)
         plt.figure(figsize=(14, 5))
         librosa.display.waveshow(y, sr=sr)
-        buffer = BytesIO()
-        plt.savefig(buffer, format='png')
-        image_base64 = base64.b64encode(buffer.getvalue()).decode('utf-8')
-        return image_base64
+        image = Save_image()
+        return image
 
 
 class FundamentalFrequency:
@@ -33,10 +29,8 @@ class FundamentalFrequency:
         plt.plot(f0_yin)
         plt.xlabel('Tempo (Amostras)')
         plt.ylabel('Frequência (Hz)')
-        buffer = BytesIO()
-        plt.savefig(buffer, format='png')
-        image_base64 = base64.b64encode(buffer.getvalue()).decode('utf-8')
-        return image_base64
+        image = Save_image()
+        return image
 
 
 class Spectrogram:
@@ -51,10 +45,8 @@ class Spectrogram:
                                                                ref=np.max),
                                        y_axis='log', x_axis='time', ax=ax)
         fig.colorbar(img, ax=ax, format="%+2.0f dB")
-        buffer = BytesIO()
-        plt.savefig(buffer, format='png')
-        image_base64 = base64.b64encode(buffer.getvalue()).decode('utf-8')
-        return image_base64
+        image = Save_image()
+        return image
 
 
 class HeatSpectrogram:
@@ -79,7 +71,5 @@ class HeatSpectrogram:
         plt.ylim(0)
         plt.ylabel(" Intensidade [dB]")
         plt.xlim([snd.xmin, snd.xmax])
-        buffer = BytesIO()
-        plt.savefig(buffer, format='png')
-        image_base64 = base64.b64encode(buffer.getvalue()).decode('utf-8')
-        return image_base64
+        image = Save_image()
+        return image

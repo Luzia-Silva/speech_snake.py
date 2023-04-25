@@ -1,19 +1,18 @@
-from b2sdk.v2 import api as b2
-from flask import jsonify, redirect
-from flask import send_file, render_template, request, flash
 import base64
-from io import BytesIO
+import json
+import os
 import matplotlib.pyplot as plt
 import seaborn as sns
-import os
+from io import BytesIO
 from werkzeug.utils import secure_filename
-
 from app import app
 from app.static.data.aboutTheTeams import aboutTheTeams
 from app.static.data.analyzes import analyzes
 from app.models.frequency import Frequency
 from app.enum.type_file import Allowed_file
-
+from b2sdk.v2 import api as b2
+from flask import jsonify, redirect
+from flask import send_file, render_template, request, flash
 
 b2_api = b2.B2Api()
 b2_api.authorize_account("production", os.environ.get(

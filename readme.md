@@ -49,7 +49,7 @@ Para executar o projeto em seu ambiente será necessário a utilização da vers
 - [Matplotlib](https://matplotlib.org/) - Biblioteca de visualização gráfica - versão 3.7.1
 - [Parselmouth](https://parselmouth.readthedocs.io/en/stable/) - Biblioteca Python para o software Praat
 - [BackBlaze](https://www.backblaze.com/) - Upload de arquivos na nuvem
-- [b2-sdk-python]("https://b2-sdk-python.readthedocs.io/en/master/quick_start.html#copy-file) - É uma biblioteca cliente para fácil acesso a todos os recursos do B2 Cloud Storage.
+- [b2-sdk-python](https://b2-sdk-python.readthedocs.io/en/master/quick_start.html#copy-file) - É uma biblioteca cliente para fácil acesso a todos os recursos do B2 Cloud Storage.
 
 # ✒️ Autores
 

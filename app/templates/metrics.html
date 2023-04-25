@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container text-center">
+  <h1 class="text-center m-4 " style="font-size: 2rem">Sobre nós</h1>
+  {% for dado in dados %}
+  <div class="row mt-4">
+    <div class="col-md-4 col-sm-12">
+      <h1 class="text-center" style="font-size: 1.6rem"> {{dado.title}}</h1>
+      <p class="fw-normal " style="font-size: 1.2rem;max-width: 50rem; text-align: justify;padding: 1rem;">
+        {{dado.description}}</p>
+    </div>
+    <ul class="list-group m-4 col-md-3 col-sm-12">
+      {% for men in dado.men %}
+      <li class="list-group-item">{{men}}</li>
+      {% endfor %}
+    </ul>
+    <ul class="list-group m-4 col-md-3 col-sm-12">
+      {% for woman in dado.women %}
+      <li class="list-group-item">{{woman}}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endfor %}
+  <div class="d-grid gap-2">
+    <a href="/audioupload" class="m-4">
+      <button type="button" class="btn btn-secondary btn-md px-4 gap-3"> Analisar áudio </button>
+    </a>
+  </div>
+</div>
+
+
+{% endblock %}

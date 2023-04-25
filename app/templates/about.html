@@ -1,33 +1,28 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="container text-center">
-  <h1 class="text-center m-4 " style="font-size: 2rem">Sobre nós</h1>
+<div class="container">
   {% for dado in dados %}
-  <div class="row mt-4">
-    <div class="col-md-4 col-sm-12">
-      <h1 class="text-center" style="font-size: 1.6rem"> {{dado.title}}</h1>
-      <p class="fw-normal " style="font-size: 1.2rem;max-width: 50rem; text-align: justify;padding: 1rem;">
+  <div class="row">
+    <div class="d-flex align-items-center flex-column">
+      <img src="../static/data/image/logo.png" width="150" height="auto" class="mt-4">
+      <h1 class="text-center" style="font-size: 2rem">O que é o projeto?</h1>
+    </div>
+    <div class="col-12">
+      <p class="fw-normal " style="font-size: 1.2rem; text-align: justify;">
         {{dado.description}}</p>
     </div>
-    <ul class="list-group m-4 col-md-3 col-sm-12">
-      {% for men in dado.men %}
-      <li class="list-group-item">{{men}}</li>
+    <ul class="col-12 ">
+      {% for students in dado.students %}
+      <li class="list-group-item">{{students}}</li>
       {% endfor %}
     </ul>
-    <ul class="list-group m-4 col-md-3 col-sm-12">
-      {% for woman in dado.women %}
-      <li class="list-group-item">{{woman}}</li>
+    <ul class="col-12">
+      {% for advisors in dado.advisors %}
+      <li class="list-group-item">{{advisors}}</li>
       {% endfor %}
     </ul>
   </div>
   {% endfor %}
-  <div class="d-grid gap-2">
-    <a href="/audioupload" class="m-4">
-      <button type="button" class="btn btn-secondary btn-md px-4 gap-3"> Analisar áudio </button>
-    </a>
-  </div>
 </div>
-
-
 {% endblock %}

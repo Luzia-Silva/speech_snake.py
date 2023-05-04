@@ -43,7 +43,7 @@ Para executar o projeto em seu ambiente será necessário a utilização da vers
 
 # 🛠️ Construído com
 
-- [Flask](https://flask.palletsprojects.com/) - Framework web - versão 2.2.3
+- [Flask](https://flask.palletsprojects.com/) - Frame work web - versão 2.2.3
 - [Bootstrap](https://getbootstrap.com/) - Framework web styles - versão 5.0
 - [Librosa](https://librosa.org/doc/latest/index.html) - Biblioteca de análise de áudios - versão 0.10.0
 - [Matplotlib](https://matplotlib.org/) - Biblioteca de visualização gráfica - versão 3.7.1

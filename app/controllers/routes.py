@@ -1,18 +1,21 @@
-import base64
 import json
-import os
 import matplotlib.pyplot as plt
 import seaborn as sns
+import io
 from io import BytesIO
-from werkzeug.utils import secure_filename
+import soundfile as sf
+from six.moves.urllib.request import urlopen
+import librosa
+import os
+from b2sdk.v2 import api as b2
+from flask import jsonify, redirect
+from flask import send_file, render_template, request, flash
 from app import app
 from app.static.data.aboutTheTeams import aboutTheTeams
 from app.static.data.analyzes import analyzes
 from app.models.frequency import Frequency
 from app.enum.type_file import Allowed_file
-from b2sdk.v2 import api as b2
-from flask import jsonify, redirect
-from flask import send_file, render_template, request, flash
+
 
 b2_api = b2.B2Api()
 b2_api.authorize_account("production", os.environ.get(
@@ -33,11 +36,10 @@ def audioUpload():
         if file.filename == "":
             flash("Por favor, faça o upload de um áudio", "warning")
             return render_template("audioupload.html")
-        # elif request.content_length > 20480000:
-        #     flash(
-        #         "Por favor, faça o upload de um áudio de no máximo de 1 minuto", "danger")
-        #     return render_template("audioupload.html")
-        # Entender como fazer essa analise
+        elif request.content_length > 3539180:
+            flash(
+                "Por favor, faça o upload de um áudio de no máximo de 1 minuto", "danger")
+            return render_template("audioupload.html")
         elif not Allowed_file(file.filename):
             flash("Por favor, informe um áudio dos seguintes tipos: mp3 ou wva", "danger")
         else:
@@ -52,11 +54,11 @@ def audioUpload():
 
 @ app.route("/analyzes/<filename>")
 def audioupload(filename):
-    local_file_path = os.path.join(
-        "app/static/upload/" + secure_filename(filename))
-    downloaded_file = bucket.download_file_by_id(filename)
-    downloaded_file.save_to(local_file_path)
-    analyzesJson = analyzes(audio_file_user=local_file_path)
+    url = b2_api.get_download_url_for_fileid(filename)
+    print(url)
+    bytes_io = io.BytesIO(urlopen(url).read())
+    y, sr = librosa.load(bytes_io)
+    analyzesJson = analyzes(y=y, sr=sr)
     return render_template("analyzes.html", dados=analyzesJson)
 
 

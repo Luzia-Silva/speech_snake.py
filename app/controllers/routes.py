@@ -7,15 +7,18 @@ import soundfile as sf
 from six.moves.urllib.request import urlopen
 import librosa
 import os
+import parselmouth
+import numpy as np
+import tempfile
 from b2sdk.v2 import api as b2
 from flask import jsonify, redirect
 from flask import send_file, render_template, request, flash
+
 from app import app
 from app.static.data.aboutTheTeams import aboutTheTeams
 from app.static.data.analyzes import analyzes
-from app.models.frequency import Frequency
 from app.enum.type_file import Allowed_file
-
+from app.models.frequency import Frequency
 
 b2_api = b2.B2Api()
 b2_api.authorize_account("production", os.environ.get(
@@ -36,12 +39,14 @@ def audioUpload():
         if file.filename == "":
             flash("Por favor, faça o upload de um áudio", "warning")
             return render_template("audioupload.html")
+        elif not Allowed_file(file.filename):
+            print(file.filename)
+            flash("Por favor, informe um áudio dos seguintes tipos: mp3 ou wva", "danger")
         elif request.content_length > 3539180:
             flash(
                 "Por favor, faça o upload de um áudio de no máximo de 1 minuto", "danger")
             return render_template("audioupload.html")
-        elif not Allowed_file(file.filename):
-            flash("Por favor, informe um áudio dos seguintes tipos: mp3 ou wva", "danger")
+
         else:
             bucket.upload_bytes(file.read(), file.filename,
                                 content_type='audio/wav')
@@ -52,10 +57,21 @@ def audioUpload():
         return render_template("audioupload.html")
 
 
+@ app.route("/formants/<filename>")
+def formants(filename):
+    url = b2_api.get_download_url_for_fileid(filename)
+    bytes_io = io.BytesIO(urlopen(url).read())
+    with tempfile.NamedTemporaryFile(suffix=".wav", delete=False) as tmp_file:
+        tmp_file.write(bytes_io.read())
+        tmp_file_path = tmp_file.name
+    formant = Frequency(audio_file=tmp_file_path).audioFormants()
+    os.remove(tmp_file_path)
+    return render_template("formants.html", formant=formant, filename=filename)
+
+
 @ app.route("/analyzes/<filename>")
 def audioupload(filename):
     url = b2_api.get_download_url_for_fileid(filename)
-    print(url)
     bytes_io = io.BytesIO(urlopen(url).read())
     y, sr = librosa.load(bytes_io)
     analyzesJson = analyzes(y=y, sr=sr)

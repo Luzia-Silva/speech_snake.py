@@ -1,22 +1,21 @@
 import parselmouth
+import tempfile
 from pydub import AudioSegment
 
 
 class Frequency:
-    def __init__(self, audio_file, filename):
+    def __init__(self, audio_file):
         self.audio_file = audio_file
-        self.filename = filename
 
-    def audioFrequency(self):
-        sound = parselmouth.Sound(self.audio_file)
-        pitch = sound.to_pitch()
-        pitch_values = pitch.selected_array['frequency']
-        f0_mean = sum(pitch_values) / len(pitch_values)
-        return f0_mean
-
-    def frequencyFromFilteredAudioSave(self):
-        audio_file = AudioSegment.from_wav(self.audio_file)
-        cutoff_freq = 2000
-        filtered_audio = audio_file.low_pass_filter(cutoff_freq)
-        filtered_audio.export("app/static/upload_export/" +
-                              self.filename, format='wav')
+    def audioFormants(self):
+        tmp_file_path = self.audio_file
+        sound = parselmouth.Sound(tmp_file_path)
+        formants = sound.to_formant_burg()
+        time = 0.1
+        f1 = formants.get_value_at_time(1, time)
+        f2 = formants.get_value_at_time(2, time)
+        if f1 < 600 and f2 > 2000:
+            return "Análise da frequências formantes da voz está clara."
+        else:
+            return "Análise da frequências formantes está confusa."
+    

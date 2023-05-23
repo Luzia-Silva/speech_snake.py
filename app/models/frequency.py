@@ -15,7 +15,6 @@ class Frequency:
         f1 = formants.get_value_at_time(1, time)
         f2 = formants.get_value_at_time(2, time)
         if f1 < 600 and f2 > 2000:
-            return "Análise da frequências formantes da voz está clara."
+            return "Frequências Formantes da voz está clara"
         else:
-            return "Análise da frequências formantes está confusa."
-    
+            return "Frequências Formantes está confusa"

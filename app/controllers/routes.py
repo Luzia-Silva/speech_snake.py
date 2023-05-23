@@ -52,7 +52,7 @@ def audioUpload():
                                 content_type='audio/wav')
             file_info = bucket.get_file_info_by_name(file.filename)
             file_id = file_info.id_
-            return redirect("/analyzes/" + file_id)
+            return redirect("/formants/" + file_id)
     else:
         return render_template("audioupload.html")
 

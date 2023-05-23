@@ -3,12 +3,12 @@
 {% block content %}
 
 <div class="px-4 py-1 my-5 text-center col-12 ">
-  
+
   <h1 class="text-center mt-4">Análises de Frequência Formantes</h1>
   <div class="col-lg-8 mx-auto">
     <p class="lead mb-4" style="font-size: 1.2rem;text-align: justify; ">
-      <strong>{{ formant }}</strong>
-      Está análise realiza a utilização da biblioteca
+      <strong>Análise da {{ formant }}</strong>
+      está análise realiza a utilização da biblioteca
       Parselmouth para calcular as
       frequências formantes (F1 e F2) do arquivo de áudio. Em seguida, é avaliada a clareza da voz com base nas
       tendências mencionadas anteriormente: se a F1 for menor que 600 Hz e a F2 for maior que 2000 Hz, a voz é

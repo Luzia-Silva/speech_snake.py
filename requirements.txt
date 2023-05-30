@@ -54,6 +54,7 @@ matplotlib-inline==0.1.6
 msgpack==1.0.5
 numba==0.56.4
 numpy==1.23.5
+opencv-python==4.7.0.72
 packaging==23.0
 pandas==1.5.3
 parso==0.8.3

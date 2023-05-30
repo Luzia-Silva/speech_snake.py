@@ -2,7 +2,7 @@
 <img src="docs/images/pages/speechsnake.png" width="400">
 </center>
 
-### O projeto SpeechSnake foi desenvolvido com a utilização da linguagem Python, que deu origem ao seu nome, e também bibliotecas de análise de voz e fluência que resultam em uma saída com gráficos e dados sobre o áudio analisado.
+### O projeto SpeechSnake foi desenvolvido com a utilização da linguagem Python, que deu origem ao seu nome, e também bibliotecas de análise de voz e fluência que resultam em uma saída com gráficos e dados sobre o áudio analisado.
 
 </br>
 
@@ -37,9 +37,13 @@ Para executar o projeto em seu ambiente será necessário a utilização da vers
 # 📃 Páginas
 
 ![Alt text](docs/images/pages/home.png)
-![Alt text](docs/images/pages/metrics.png)
-![Alt text](docs/images/pages/analytics_one.png)
-![Alt text](docs/images/pages/analytics_two.png)
+![Alt text](docs/images/pages/about_one.png)
+![Alt text](docs/images/pages/about_two.png)
+![Alt text](docs/images/pages/audioupload.png)
+![Alt text](docs/images/pages/formants.png)
+![Alt text](docs/images/pages/waveshow.png)
+![Alt text](docs/images/pages/f0.png)
+![Alt text](docs/images/pages/spectogram.png)
 
 # 🛠️ Construído com
 
@@ -51,21 +55,15 @@ Para executar o projeto em seu ambiente será necessário a utilização da vers
 - [BackBlaze](https://www.backblaze.com/) - Upload de arquivos na nuvem
 - [b2-sdk-python](https://b2-sdk-python.readthedocs.io/en/master/quick_start.html#copy-file) - É uma biblioteca cliente para fácil acesso a todos os recursos do B2 Cloud Storage.
 
-# ✒️ Autores
-
-📚 Perfis profissionais:
-
-- **Desenvolvedor** - [Luzia Silva](https://github.com/Luzia-Silva)
-- **Pesquisador** - [Joyce Leal](https://www.linkedin.com/in/joyce-lebedasi/)
-- **Pesquisador/Desenvolvedor** - [Vinicius Augusto](https://www.linkedin.com/in/vinissilva/)
-
-## Acesse os nossos vídeos abaixo
-
-- [O que é o projeto SpeechSnake?](https://www.youtube.com/watch?v=ayURn4ZPUwU)
-
 <br>
+<br>
+<h1 align="center">Development Team</h1>
+<p align="center">
+<a href="https://www.linkedin.com/in/silva-luzia/"><img src="https://github.com/Luzia-Silva.png" width="50px" alt="image" /></a>&nbsp;&nbsp;<a href="https://www.linkedin.com/in/joyce-lebedasi/"><img src="https://media.licdn.com/dms/image/D4D03AQHptug0Jv2yuQ/profile-displayphoto-shrink_400_400/0/1670929234733?e=1691020800&v=beta&t=R1EOPamB8PLy6aBvaewb2jBmaAPmogTDkaFB8wnAGBM" width="50px" alt="image" /></a>&nbsp;&nbsp;<a href="https://www.linkedin.com/in/vinissilva/"><img src="https://media.licdn.com/dms/image/D4D03AQFnPPseEU_YlA/profile-displayphoto-shrink_400_400/0/1665557916695?e=1691020800&v=beta&t=9dlMHTsK2MoYJ8BgwjXnennfdrAFadUgRDOtkg_LwOw" width="50px" alt="image" /></a>
+</p>
+
 <br>
  <Center>
-      <p>Copyright © 2023 Girludev ❤️</p>
+      <p>Copyright © 2023 Girludev Company ❤️</p>
     
  </Center>

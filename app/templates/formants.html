@@ -2,19 +2,21 @@
 
 {% block content %}
 
-<div class="px-4 py-1 my-5 text-center col-12 ">
-
-  <h1 class="text-center mt-4">Análises de Frequência Formantes</h1>
+<div class="px-4 py-1 my-4  col-12 ">
+  <h1 class="text-center mt-4">Análise de Frequência Formante</h1>
   <div class="col-lg-8 mx-auto">
     <p class="lead mb-4" style="font-size: 1.2rem;text-align: justify; ">
-      <strong>Análise da {{ formant }}</strong>
-      está análise realiza a utilização da biblioteca
-      Parselmouth para calcular as
+      A Análise de Frequências Formantes é realizada com a utilização da biblioteca Parselmouth para calcular as
       frequências formantes (F1 e F2) do arquivo de áudio. Em seguida, é avaliada a clareza da voz com base nas
       tendências mencionadas anteriormente: se a F1 for menor que 600 Hz e a F2 for maior que 2000 Hz, a voz é
       considerada clara. Caso contrário, a voz é considerada confusa. No entanto, é importante lembrar que essa
-      avaliação é apenas uma aproximação geral e pode não ser precisa para todas as situações.
+      avaliação é apenas uma aproximação geral e pode não ser precisa para todas as situações.
     </p>
+    <ul class="list-group mb-4">
+      {% for formant in formants %}
+      <li class="list-group-item" style="font-size: 1rem;text-align: justify; ">{{formant}}</li>
+      {% endfor %}
+    </ul>
     <div class="d-grid gap-3 d-flex justify-content-center">
       <a href="/analyzes/{{ filename }}">
         <button type="button" class="btn btn-secondary gap-4 btn-md">Análises Gráficas <i

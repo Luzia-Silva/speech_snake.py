@@ -12,7 +12,12 @@
       <p class="fw-normal " style="font-size: 1.2rem; text-align: justify;">
         {{dado.description}}</p>
     </div>
-    <ul class="col-12 ">
+    <ul class="col-12">
+      {% for type in dado.typeAnalyzes %}
+      <li class="list-group-item mt-2" style="font-size: 1.2rem; text-align: justify;">{{type}}</li>
+      {% endfor %}
+    </ul>
+    <ul class="col-12">
       {% for students in dado.students %}
       <li class="list-group-item">{{students}}</li>
       {% endfor %}

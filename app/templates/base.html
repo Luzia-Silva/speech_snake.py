@@ -19,6 +19,7 @@
     .main-content {
       min-height: calc(100% - 50px);
       padding-bottom: 50px;
+      visibility: hidden;
     }
 
     .footer {
@@ -29,10 +30,25 @@
       width: 100%;
       background-color: black;
     }
+
+    .loader {
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   </style>
 </head>
 
 <body>
+  <script>
+    window.addEventListener('load', function () {
+      document.querySelector('.main-content').style.visibility = 'visible';
+      document.querySelector('.loader').style.display = 'none';
+    });
+
+  </script>
+
   <nav class="navbar navbar-expand-lg bg-secondary" data-bs-theme="dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="/">Speech Snake</a>
@@ -55,19 +71,25 @@
       </div>
     </div>
   </nav>
+  <div class="loader">
+    <div class="text-center m-5">
+      <div class="spinner-grow" role="status"> </div>
+    </div>
+  </div>
   <div class="main-content">
     {% block content %}
     {% endblock %}
   </div>
   <div class="footer">
     <div class="text-center p-3">
-      © 2023 Copyright of 
-      <a class= "text-light fw-bold" href="https://www.girludev.com">Girludev</a>
+      © 2023 Copyright of
+      <a class="text-light fw-bold" href="https://github.com/Luzia-Silva/speechsnake.py">Github</a>
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
     crossorigin="anonymous"></script>
 </body>
+
 
 </html>

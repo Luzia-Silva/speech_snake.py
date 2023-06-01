@@ -19,9 +19,8 @@ from flask import send_file, render_template, request, flash, abort
 from app import app
 from app.static.data.aboutTheTeams import aboutTheTeams
 from app.static.data.analyzes import analyzes
-from app.enum.type_file import Allowed_file
 from app.models.frequency import Frequency
-
+from app.enum.allowed_file import Allowed_file
 
 b2_api = b2.B2Api()
 b2_api.authorize_account("production", os.environ.get(
@@ -48,20 +47,25 @@ def loading():
 def index():
     return render_template("index.html")
 
-
 @ app.route("/audioupload", methods=["POST", "GET"])
 def audioUpload():
     if request.method == "POST":
         file = request.files["audio"]
-        bucket.upload_bytes(file.read(), file.filename,
-                            content_type='audio/wav')
-        file_info = bucket.get_file_info_by_name(file.filename)
-        file_id = file_info.id_
-        start_time = time.time()
-        print(start_time)
-        return redirect("/formants/" + file_id)
+        if file.filename == "":
+            return render_template("audioupload.html")
+        elif not Allowed_file(file.filename):
+            return render_template("audioupload.html")
+        elif request.content_length > 3539180:
+            return render_template("audioupload.html")
+        else:
+            bucket.upload_bytes(file.read(), file.filename,
+                                content_type='audio/wav')
+            file_info = bucket.get_file_info_by_name(file.filename)
+            file_id = file_info.id_
+            return redirect("/formants/" + file_id)
     else:
         return render_template("audioupload.html")
+
 
 @ app.route("/formants/<filename>")
 def formants(filename):

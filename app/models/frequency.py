@@ -14,15 +14,26 @@ class Frequency:
         time = 0.1
         f1 = formants.get_value_at_time(1, time)
         f2 = formants.get_value_at_time(2, time)
-        if f1 < 600 and f2 > 2000:
+
+        if (f1 > 300 and f1 < 900) and (f2 > 800 and f2 < 2800):
             return [
-                "Resultado da Frequência Formante: Voz Clara.",
                 "F1:" + " " + str(round(f1, 2)),
-                "F2:" + " " + str(round(f2, 2))
+                "F2:" + " " + str(round(f2, 2)),
+                "O primeiro formante, F1, está relacionado principalmente com a abertura do trato vocal, enquanto o segundo formante, F2, está relacionado principalmente com a posição da língua no trato vocal.",
             ]
+        elif f1 > 900 and (f2 > 800 and f2 < 2800):
+            f1_range = f1 + (f1 * 0.25)
+            return [
+                "F1:" + " " + str(round(f1, 2)),
+                "F2:" + " " + str(round(f2, 2)),
+                "O primeiro formante, F1, está relacionado principalmente com a abertura do trato vocal, enquanto o segundo formante, F2, está relacionado principalmente com a posição da língua no trato vocal.",
+                "Com base em estudos visualizamos que o F1 está maior que o paramentros encontrados pela equipe, então realizamos um estudo de que um range de 25% no F1. "
+            ]
+
         else:
             return [
-                "Resultado da Frequência Formante: Voz Confusa.",
-                "(F1):" + " " + str(round(f1, 2)),
-                "(F2):" + " " + str(round(f2, 2))
+                "F1:" + " " + str(round(f1, 2)),
+                "F2:" + " " + str(round(f2, 2)),
+                "O primeiro formante, F1, está relacionado principalmente com a abertura do trato vocal, enquanto o segundo formante, F2, está relacionado principalmente com a posição da língua no trato vocal.",
+                 "Com base em estudos visualizamos que o F1 está maior que o paramentros encontrados pela equipe, então realizamos um estudo de que um range de 25% no F1."
             ]

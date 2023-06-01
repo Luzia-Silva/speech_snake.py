@@ -2,16 +2,35 @@
 
 {% block content %}
 
+<!-- if file.filename == "":
+flash("Por favor, faça o upload de um áudio", "warning")
+return render_template("audioupload.html")
+elif not Allowed_file(file.filename):
+flash("Não é possível realizar upload desse tipo de arquivo. Por favor, informe um arquivo de áudio desses tipos: MP3 ou WVA", "danger")
+return render_template("audioupload.html")
+elif request.content_length > 3539180:
+flash(
+    "Por favor, faça o upload de um áudio de no máximo de 1 minuto", "danger")
+return render_template("audioupload.html")
+else: -->
+<script>
+  function handleOnclick() {
+    const audio = document.getElementById('formFile');
+    if (audio !== null) {
+      alert("")
+    }
+  }
+</script>
 <div class="d-flex align-content-center justify-content-center ">
   <div class="px-4 py-1 my-2 text-center col-md-6 col-sm-12">
-    <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+    <div class="alert alert-warning alert-dismissible fade show" role="alert" id="alert-message">
+      sdolk
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>   
+    </div>
     <form action="/audioupload" enctype="multipart/form-data" method="POST">
       <div class="mb-3">
         <h1 class="text-center mt-4">Faça upload do seu áudio</h1>
-        <input class="form-control" type="file" id="formFile" name="audio"
-          accept="audio/*">
+        <input class="form-control" type="file" id="formFile" name="audio" accept=".mp3,.wav">
       </div>
       <div class="alert alert-dark">
         <h4 class="alert-heading" style="font-size: 1.2rem; ">Grave um áudio repetindo esse trava-língua</h4>
@@ -54,7 +73,7 @@
         </div>
       </div>
       <div class="d-grid gap-2">
-        <button class="btn btn-secondary" type="submit"> Confirmar </button>
+        <button class="btn btn-secondary" type="submit" onclick="handleOnclick()"> Confirmar </button>
       </div>
     </form>
   </div>

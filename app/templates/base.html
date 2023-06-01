@@ -20,6 +20,7 @@
       min-height: calc(100% - 50px);
       padding-bottom: 50px;
       visibility: hidden;
+
     }
 
     .footer {
@@ -41,22 +42,11 @@
 </head>
 
 <body>
-  <!-- const archiveFile = document.getElementById('formFile');
-  const extensionsAllowed = /(.mp3|.wav)$/i;
-  if (!extensionsAllowed.exec(archiveFile)) {
-    alert('erro')
-  }
-  else {
-    alert("porra")
-  } -->
   <script>
-
- 
     window.addEventListener('load', function () {
       document.querySelector('.main-content').style.visibility = 'visible';
       document.querySelector('.loader').style.display = 'none';
     });
-
   </script>
   <nav class="navbar navbar-expand-lg bg-secondary" data-bs-theme="dark">
     <div class="container-fluid">
@@ -85,7 +75,7 @@
       <div class="spinner-grow" role="status"> </div>
     </div>
   </div>
-  <div class="main-content">
+  <div class="main-content container-lg">
     {% block content %}
     {% endblock %}
   </div>

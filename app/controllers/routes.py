@@ -39,8 +39,10 @@ def page_not_found(e):
 def internal_server_error(e):
     return render_template('http.html', code=e), 500
 
+
 def loading():
     return render_template("loading.html")
+
 
 @ app.route("/")
 def index():
@@ -51,27 +53,15 @@ def index():
 def audioUpload():
     if request.method == "POST":
         file = request.files["audio"]
-        if file.filename == "":
-            flash("Por favor, faça o upload de um áudio", "warning")
-            return render_template("audioupload.html")
-        elif not Allowed_file(file.filename):
-            flash("Não é possível realizar upload desse tipo de arquivo. Por favor, informe um arquivo de áudio desses tipos: MP3 ou WVA", "danger")
-            return render_template("audioupload.html")
-        elif request.content_length > 3539180:
-            flash(
-                "Por favor, faça o upload de um áudio de no máximo de 1 minuto", "danger")
-            return render_template("audioupload.html")
-        else:
-            bucket.upload_bytes(file.read(), file.filename,
-                                content_type='audio/wav')
-            file_info = bucket.get_file_info_by_name(file.filename)
-            file_id = file_info.id_
-            start_time = time.time()
-            print(start_time)           
-            return redirect("/formants/" + file_id)
+        bucket.upload_bytes(file.read(), file.filename,
+                            content_type='audio/wav')
+        file_info = bucket.get_file_info_by_name(file.filename)
+        file_id = file_info.id_
+        start_time = time.time()
+        print(start_time)
+        return redirect("/formants/" + file_id)
     else:
         return render_template("audioupload.html")
-
 
 @ app.route("/formants/<filename>")
 def formants(filename):
@@ -110,7 +100,3 @@ def about():
     unpackingJsonFunction = json.dumps(aboutTheTeams)
     dados = json.loads(unpackingJsonFunction)
     return render_template("about.html", dados=dados)
-
-
-
-

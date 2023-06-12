@@ -52,10 +52,14 @@ def audioUpload():
     if request.method == "POST":
         file = request.files["audio"]
         if file.filename == "":
+            flash("Por favor, faça o upload de um áudio", "warning")
             return render_template("audioupload.html")
         elif not Allowed_file(file.filename):
+            flash("Não é possível realizar upload desse tipo de arquivo. Por favor, informe um arquivo de áudio desses tipos: MP3 ou WVA", "danger")
             return render_template("audioupload.html")
         elif request.content_length > 3539180:
+            flash(
+                "Por favor, faça o upload de um áudio de no máximo de 1 minuto", "danger")
             return render_template("audioupload.html")
         else:
             bucket.upload_bytes(file.read(), file.filename,
@@ -80,8 +84,7 @@ def formants(filename):
         os.remove(tmp_file_path)
         return render_template("formants.html", formants=formants, filename=filename)
     else:
-        flash("Faça upload novamente, não encontramos esse áudio em nossa base de dados.", "info")
-        return render_template("audioupload.html")
+        abort(500)
 
 
 @ app.route("/analyzes/<filename>")
@@ -94,9 +97,7 @@ def analyzesUpload(filename):
         analyzesJson = analyzes(y=y, sr=sr)
         return render_template("analyzes.html", dados=analyzesJson)
     else:
-        flash(
-            "Faça upload novamente, não encontramos esse áudio em nossa base de dados.", "info")
-        return render_template("audioupload.html")
+        abort(500)
 
 
 @ app.route("/about")

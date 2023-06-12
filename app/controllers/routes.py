@@ -19,9 +19,8 @@ from flask import send_file, render_template, request, flash, abort
 from app import app
 from app.static.data.aboutTheTeams import aboutTheTeams
 from app.static.data.analyzes import analyzes
-from app.enum.type_file import Allowed_file
 from app.models.frequency import Frequency
-
+from app.enum.allowed_file import Allowed_file
 
 b2_api = b2.B2Api()
 b2_api.authorize_account("production", os.environ.get(
@@ -39,13 +38,14 @@ def page_not_found(e):
 def internal_server_error(e):
     return render_template('http.html', code=e), 500
 
+
 def loading():
     return render_template("loading.html")
+
 
 @ app.route("/")
 def index():
     return render_template("index.html")
-
 
 @ app.route("/audioupload", methods=["POST", "GET"])
 def audioUpload():
@@ -66,8 +66,6 @@ def audioUpload():
                                 content_type='audio/wav')
             file_info = bucket.get_file_info_by_name(file.filename)
             file_id = file_info.id_
-            start_time = time.time()
-            print(start_time)           
             return redirect("/formants/" + file_id)
     else:
         return render_template("audioupload.html")
@@ -86,8 +84,7 @@ def formants(filename):
         os.remove(tmp_file_path)
         return render_template("formants.html", formants=formants, filename=filename)
     else:
-        flash("Faça upload novamente, não encontramos esse áudio em nossa base de dados.", "info")
-        return render_template("audioupload.html")
+        abort(500)
 
 
 @ app.route("/analyzes/<filename>")
@@ -100,9 +97,7 @@ def analyzesUpload(filename):
         analyzesJson = analyzes(y=y, sr=sr)
         return render_template("analyzes.html", dados=analyzesJson)
     else:
-        flash(
-            "Faça upload novamente, não encontramos esse áudio em nossa base de dados.", "info")
-        return render_template("audioupload.html")
+        abort(500)
 
 
 @ app.route("/about")
@@ -110,7 +105,3 @@ def about():
     unpackingJsonFunction = json.dumps(aboutTheTeams)
     dados = json.loads(unpackingJsonFunction)
     return render_template("about.html", dados=dados)
-
-
-
-
